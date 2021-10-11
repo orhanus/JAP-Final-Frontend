@@ -1,0 +1,10 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand mr-2" href="#">Rotten potatoes</a>
+        <a *ngIf="(accountService.getUserRole() === 'Admin')" routerLink="/media-add" class="navbar-nav mr-auto">Add Media</a>
+        <div class="ml-auto">
+            <button *ngIf="!(accountService.currentUser$ | async)" class="btn btn-primary" (click)="login()">Log in</button>
+            <button *ngIf="(accountService.currentUser$ | async)" class="btn btn-primary" (click)="logout()">Log out</button>
+        </div>
+    </nav>
+</header>

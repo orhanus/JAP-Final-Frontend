@@ -1,0 +1,26 @@
+<div class="container text-light" *ngIf="media">
+    <tabset>
+        <tab heading="About {{media.title}}">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMedia()">
+                <h4>Title</h4>
+                <textarea class="form-control" [(ngModel)]="media.title" name="title" rows="6"></textarea>
+                <h4 class="mt-2">Description</h4>
+                <textarea class="form-control" [(ngModel)]="media.description" name="description" rows="6"></textarea>
+                <h4 class="mt-2">Cover image url</h4>
+                <input type="text" class="form-control" [(ngModel)]="media.coverImageUrl" name="coverImageUrl" rows="6">
+                <h4 class="mt-2">Type:</h4>
+                <input type="radio" value="Movie" name="type" [(ngModel)]="media.type"> Movie
+                <input type="radio" value="Show" name="type" [(ngModel)]="media.type"> Show
+                <h4 class="mt-2">Actors:</h4>
+                <textarea class="form-control" [(ngModel)]="actors" name="actors"></textarea>
+                <h4 class="mt-2">Release date:</h4>
+                <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker
+                    [(ngModel)]="media.releaseDate" name="releaseDate" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" required>
+                <button class="btn btn-success mt-2" type="submit">Update media</button>
+            </form>
+        </tab>
+        <tab heading="Screenings">
+            <p>Screenings go here</p>
+        </tab>
+    </tabset>
+</div>

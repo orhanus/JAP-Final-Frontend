@@ -1,0 +1,14 @@
+<div class="container text-center">
+    <div class="d-flex-column">
+        <form #registerForm="ngForm" class="register-form text-center" (ngSubmit)="register()" autocomplete="off">
+            <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text"
+                placeholder="Username" style="margin: 5px 5px 5px 5px">
+            <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
+                placeholder="Password" style="margin: 5px 5px 5px 5px">
+            <input name="confirmPassword" [(ngModel)]="model.confirmPassword" class="form-control me-2" type="password"
+                placeholder="Confirm password" style="margin: 5px 5px 5px 5px">
+            <button class="btn btn-outline-success" type="submit" style="margin: 5px 5px 5px 5px">Register</button>
+        </form>
+        <a href="/login">Already have an account? Login</a>
+    </div>
+</div>

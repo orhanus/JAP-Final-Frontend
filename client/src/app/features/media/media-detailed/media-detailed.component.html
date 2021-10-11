@@ -1,0 +1,35 @@
+<div class="row text-light" *ngIf="media">
+    <div class="col-4">
+        <div class="card">
+            <img src="{{media.coverImageUrl || './assets/user.png'}}" alt="{{media.title}}" class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <h4 class="text-dark">{{media.title}}</h4>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
+                    (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
+                    (click)="onClick()"
+                    style="color: #0275d8;font-size: 20px;"></rating>
+                    <label class="text-dark">{{rate | number:'1.1-1'}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <tab heading="About {{media.title}}">
+                <h4>Description</h4>
+                <p>{{media.description}}</p>
+                <h4>Cast</h4>
+                <p *ngFor="let actor of media.actors">{{actor.firstname}} {{actor.lastname}}</p>
+            </tab>
+            <tab heading="Screenings">
+                <div *ngFor="let screening of media.screenings">
+                    <app-screening [screening]="screening"></app-screening>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+    <button class="btn btn-success m-3" *ngIf="accountService.getUserRole()==='Admin'" routerLink="/media-edit/{{media.id}}">Edit media</button>
+</div>
